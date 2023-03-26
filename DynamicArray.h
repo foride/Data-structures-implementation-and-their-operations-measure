@@ -1,34 +1,40 @@
-// #ifndef SDIZO_DYNAMICARRAY_H
-// #define SDIZO_DYNAMICARRAY_H
+//
+// Created by Michal Lewandowski on 3/26/2023.
+//
 
-// class DynamicArray {
+#ifndef SDIZO_DYNAMICARRAY_H
+#define SDIZO_DYNAMICARRAY_H
 
-// public:
+#include <cstdint>
 
-//     int *head;
-//     int *tail;
-//     int size;
+class DynamicArray {
 
-//     DynamicArray();
-    
-//     ~DynamicArray();
+public:
 
-//     void insertHead(int32_t number);
-    
-//     void insertTail(int32_t number);
+    int *head{};
+    int *tail{};
+    int size{};
 
-//     void insert(int32_t number, int arrayIndex);
+    DynamicArray();
 
-//     void removeHead();
+    ~DynamicArray();
 
-//     void removeTail();
+    void insertHead(int32_t number);
 
-//     void remove(int arrayIndex);
+    void insertTail(int32_t number);
 
-//     void displayArray();
+    void insert(int32_t number, int arrayIndex);
 
-//     bool isNumberInArray(int32_t number);
+    void removeHead();
 
-// };
+    void removeTail();
 
-// #endif //SDIZO_DYNAMICARRAY_H
+    void remove(int arrayIndex);
+
+    void displayArray() const;
+
+    bool isNumberInArray(int32_t number) const;
+
+};
+
+#endif //SDIZO_DYNAMICARRAY_H
