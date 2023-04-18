@@ -7,61 +7,57 @@
 
 using namespace std;
 
+// no-argument constructor initializing variable head pointer to null and size to zero
 DynamicArray::DynamicArray() {
 
     int32_t *head = nullptr;
-    int32_t *tail = nullptr;
     int size = 0;
 }
-
+// destructor, deletes head array
 DynamicArray::~DynamicArray() {
 
     delete[]head;
 
 }
-
+// inserts an element at the beginning of a dynamic array
 void DynamicArray::insertHead(int32_t number) {
-
+    // creates a new dynamic array with a size increased by one
     int32_t *newHead = new int32_t[size + 1];
 
     newHead[0] = number;
-
+    // copies the elements of the old dynamic array to the new one
     for (int i = 1; i <= size; i++) {
         newHead[i] = head[i - 1];
     }
-
+    // deletes the old dynamic array and assigns the new one to the head pointer
     delete head;
     head = newHead;
-    tail = &head[size];
-    cout << tail << " < tail\n";
-    cout << head << " <head\n";
     size++;
 
 }
-
+// inserts an element at the end of a dynamic array
 void DynamicArray::insertTail(int32_t number) {
-
+    // creates a new dynamic array with a size increased by one
     int32_t *newHead = new int32_t[size + 1];
     newHead[size] = number;
-
+    // copies the elements of the old dynamic array to the new one
     for (int i = 0; i < size; i++) {
         newHead[i] = head[i];
     }
+    // deletes the old dynamic array and assigns the new one to the head pointer
     delete head;
     head = newHead;
-    tail = &head[size];
-    cout << tail << " < tail a\n";
-    cout << head << " <head a\n";
     size++;
 
 }
-
+// puts an element at the selected dynamic array index
 void DynamicArray::insert(int32_t number, int arrayIndex) {
-
+    // creates a new dynamic array with a size increased by one
     if (arrayIndex >= 0 && arrayIndex <= size) {
         int32_t *newHead = new int32_t[size + 1];
 
         int j = 0;
+        // copies the elements of the old dynamic array to the new one
         for (int i = 0; i <= size; i++) {
             if (arrayIndex == i) {
                 newHead[i] = number;
@@ -70,21 +66,17 @@ void DynamicArray::insert(int32_t number, int arrayIndex) {
                 newHead[i] = head[j];
                 j++;
             }
-            cout << newHead[i] << " petla\n";
         }
-
+        // deletes the old dynamic array and assigns the new one to the head pointer
         delete head;
         head = newHead;
-        tail = &head[size];
-        cout << tail << " < tail a\n";
-        cout << head << " <head a\n";
         size++;
     } else {
         cout << "Index must be positive number and be equal or lower than array size! ";
     }
 
 }
-
+// removes the element from the beginning of the dynamic array
 void DynamicArray::removeHead() {
     if (size > 0) {
         int32_t *newHead = new int32_t[size - 1];
@@ -95,14 +87,13 @@ void DynamicArray::removeHead() {
 
         delete head;
         head = newHead;
-        tail = &head[size];
         size--;
     } else {
         cout << "Array is empty" << "\n";
     }
 
 }
-
+// removes the element at the end of the dynamic array
 void DynamicArray::removeTail() {
     if (size > 0) {
         int32_t *newHead = new int32_t[size - 1];
@@ -113,15 +104,15 @@ void DynamicArray::removeTail() {
 
         delete head;
         head = newHead;
-        tail = &head[size];
         size--;
     } else {
         cout << "Array is empty" << "\n";
     }
 
 }
-
+// removes the element at the selected dynamic array index
 void DynamicArray::remove(int arrayIndex)  {
+    // checks if there is at least one element in the array and if the given index is valid
     if (size > 0 && arrayIndex >= 0 && arrayIndex < size) {
 
         int *newHead = new int[size - 1];
@@ -143,7 +134,7 @@ void DynamicArray::remove(int arrayIndex)  {
     }
 
 }
-
+// displays an array (console display)
 void DynamicArray::displayArray() const {
     if (size > 0) {
         cout << "[ ";
@@ -155,7 +146,7 @@ void DynamicArray::displayArray() const {
         cout << "Array is empty" << "\n";
     }
 }
-
+// checks if an element with the given value exists in the array
 bool DynamicArray::isNumberInArray(int32_t number) const {
     for (int i = 0; i < size; i++) {
         if (head[i] == number) {
