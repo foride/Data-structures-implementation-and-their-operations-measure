@@ -8,4 +8,4 @@ Project contains four data structures:
  * Binary heap
  * Red black tree
 
-Project also contains basic environment for measuring these data structures and analyze them.
+Project also contains basic environment for measuring these data structures and analyzing them.
